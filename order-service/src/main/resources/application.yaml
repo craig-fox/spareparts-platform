@@ -1,3 +1,15 @@
 spring:
   application:
     name: order-service
+
+  datasource:
+      url: jdbc:postgresql://localhost:5433/orderdb
+      username: orderuser
+      password: orderpassword
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true  
