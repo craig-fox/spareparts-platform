@@ -1,4 +1,4 @@
-package nz.fox.craig.order;
+package nz.fox.craig.order.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

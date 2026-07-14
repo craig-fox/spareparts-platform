@@ -21,6 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Customers", description = "Operations for managing customers")
 @RestController
 @RequestMapping("/api/customers")
 @RequiredArgsConstructor
@@ -28,6 +34,11 @@ public class CustomerController {
 
 	private final CustomerService customerService;
 
+	@Operation(summary = "Create a new customer")
+	@ApiResponses({
+		@ApiResponse(responseCode = "201", description = "Customer created"),
+		@ApiResponse(responseCode = "400", description = "Validation failed")
+	})
 	@PostMapping
 	public ResponseEntity<CustomerResponse> createCustomer(@Valid @RequestBody CustomerRequest request) {
 		CustomerResponse response = customerService.createCustomer(request);
@@ -35,28 +46,37 @@ public class CustomerController {
 	}
 
 
+	@Operation(summary = "Get customers of a given status, or all customers")
 	@GetMapping
 	public List<CustomerResponse> getCustomers(
 			@RequestParam(required = false) CustomerStatus status) {
 		return customerService.getCustomers(status);
 	}
 
+	@Operation(summary = "Deactivate customer")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deactivateCustomer(@PathVariable Long id) {
 		customerService.deactivateCustomer(id);
 	}
 
+	@Operation(summary = "Update details of a customer by ID")
 	@PutMapping("/{id}")
 	public CustomerResponse updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerRequest request) {
 		return customerService.updateCustomer(id, request);
 	}
 
+	@Operation(summary = "Retrieve details of a customer by ID")
+	@ApiResponses({
+		@ApiResponse(responseCode = "200", description = "Customer found"),
+		@ApiResponse(responseCode = "404", description = "Customer not found")
+	})
 	@GetMapping("/{id}")
 	public CustomerResponse getCustomer(@PathVariable Long id) {
 		return customerService.getCustomer(id);
 	}
 
+	@Operation(summary = "Reactivate an inactive customer")
 	@PutMapping("/{id}/activate")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void activateCustomer(@PathVariable Long id) {

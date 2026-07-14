@@ -1,9 +1,10 @@
-package nz.fox.craig.order;
+package nz.fox.craig.order.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import nz.fox.craig.order.dto.OrderRequest;
 import nz.fox.craig.order.dto.OrderResponse;
+import nz.fox.craig.order.service.OrderService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

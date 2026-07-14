@@ -1,9 +1,9 @@
-package nz.fox.craig.order;
+package nz.fox.craig.order.exception;
 
 public class OrderAlreadyCancelledException extends RuntimeException {
 
 	public OrderAlreadyCancelledException(Long id) {
-		super("Order is already cancelled with id: " + id);
+		super(String.format( "Order %s is already cancelled", id));
 	}
 
 }

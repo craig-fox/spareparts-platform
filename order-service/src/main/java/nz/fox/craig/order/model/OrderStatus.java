@@ -1,6 +1,7 @@
-package nz.fox.craig.order;
+package nz.fox.craig.order.model;
 
 public enum OrderStatus {
+	PENDING,
 	PLACED,
 	CANCELLED
 }

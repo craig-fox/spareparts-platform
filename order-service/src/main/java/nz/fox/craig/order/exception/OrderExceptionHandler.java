@@ -1,4 +1,4 @@
-package nz.fox.craig.order;
+package nz.fox.craig.order.exception;
 
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -19,6 +19,12 @@ public class OrderExceptionHandler {
 	public ResponseEntity<Map<String, String>> handleOrderAlreadyCancelled(OrderAlreadyCancelledException ex) {
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message", ex.getMessage()));
 	}
+
+	@ExceptionHandler(CustomerNotFoundException.class)
+	public ResponseEntity<Map<String, String>> handleCustomerNotFound(CustomerNotFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", ex.getMessage()));
+	}
+
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {

@@ -1,4 +1,4 @@
-package nz.fox.craig.order_service;
+package nz.fox.craig.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

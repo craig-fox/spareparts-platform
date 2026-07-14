@@ -1,9 +1,9 @@
-package nz.fox.craig.order;
+package nz.fox.craig.order.exception;
 
 public class OrderNotFoundException extends RuntimeException {
 
 	public OrderNotFoundException(Long id) {
-		super("Order not found with id: " + id);
+		super(String.format( "Order %s not found", id));
 	}
 
 }

@@ -2,8 +2,8 @@ package nz.fox.craig.order.dto;
 
 import java.time.LocalDateTime;
 
-import nz.fox.craig.order.Order;
-import nz.fox.craig.order.OrderStatus;
+import nz.fox.craig.order.model.Order;
+import nz.fox.craig.order.model.OrderStatus;
 
 
 public record OrderResponse(
