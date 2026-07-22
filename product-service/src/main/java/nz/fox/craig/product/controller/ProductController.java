@@ -44,6 +44,6 @@ public class ProductController {
     })
     @GetMapping("/{id}")
     public ProductResponse getProduct(@PathVariable UUID id) {
-        return productService.getProduct(id);
+        return productService.getProductById(id);
     }
 }

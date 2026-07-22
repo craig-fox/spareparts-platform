@@ -3,7 +3,6 @@ package nz.fox.craig.product.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
-
 import nz.fox.craig.product.dto.ProductResponse;
 import nz.fox.craig.product.model.Product;
 
