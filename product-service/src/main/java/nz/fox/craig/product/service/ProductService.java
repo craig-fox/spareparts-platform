@@ -26,7 +26,7 @@ public class ProductService {
         );
     }
 
-    public ProductResponse getProduct(UUID id) {
+    public ProductResponse getProductById(UUID id) {
         Product product = productRepository.findById(id)
                 .filter(Product::isActive)
                 .orElseThrow(() -> new ProductNotFoundException(id));
